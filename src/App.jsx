@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "./components/Navbar.jsx";
 import Hero from "./components/Hero.jsx";
-import WhyUs from "./components/WhyUs";
+import WhyUs from "./components/WhyUs.jsx";
 import Footer from "./components/Footer";
 
 function App() {

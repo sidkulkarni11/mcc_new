@@ -2,41 +2,40 @@ import React from "react";
 
 export default function Footer() {
     return (
-        <footer className="bg-[#0D3B66] text-white py-10 mt-20">
-            <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-10">
+        <footer className="bg-[#0D3B66] text-white py-12 mt-20">
+            <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12">
 
-                {/* Column 1 - Logo & Intro */}
+                {/* Brand */}
                 <div>
-                    <h3 className="text-xl font-semibold">Mindopiia Counselling Center</h3>
-                    <p className="mt-4 text-white/80 leading-relaxed">
-                        Helping you heal, grow, and transform with compassionate,
-                        evidence-based psychological care.
+                    <h3 className="text-2xl font-semibold tracking-wide">Mindopiia Counselling Center</h3>
+                    <p className="text-gray-200 mt-3 text-sm leading-relaxed">
+                        A trusted space for emotional clarity, healing, and mental well-being.
                     </p>
                 </div>
 
-                {/* Column 2 - Quick Links */}
+                {/* Navigation */}
                 <div>
-                    <h4 className="text-lg font-semibold mb-3">Quick Links</h4>
-                    <ul className="space-y-2 text-white/80">
-                        <li><a href="#services" className="hover:text-white transition">Services</a></li>
-                        <li><a href="#about" className="hover:text-white transition">About Us</a></li>
-                        <li><a href="#contact" className="hover:text-white transition">Contact</a></li>
-                        <li><a href="#faq" className="hover:text-white transition">FAQ</a></li>
+                    <h4 className="text-lg font-semibold">Quick Links</h4>
+                    <ul className="mt-4 space-y-2 text-gray-200 text-sm">
+                        <li><a href="#about" className="hover:text-white">About</a></li>
+                        <li><a href="#approaches" className="hover:text-white">Therapeutic Approaches</a></li>
+                        <li><a href="#contact" className="hover:text-white">Contact</a></li>
                     </ul>
                 </div>
 
-                {/* Column 3 - Contact */}
+                {/* Contact */}
                 <div>
-                    <h4 className="text-lg font-semibold mb-3">Get In Touch</h4>
-                    <p className="text-white/80">📞 +91 6388190328</p>
-                    <p className="text-white/80">📧 mindopiia@gmail.com</p>
-                    <p className="text-white/80">🌐 www.mindopiia.com</p>
+                    <h4 className="text-lg font-semibold">Contact</h4>
+                    <ul className="mt-4 text-gray-200 text-sm space-y-2">
+                        <li>Mumbai, India</li>
+                        <li>mindopiia@gmail.com</li>
+                        <li>+91 63881 90328</li>
+                    </ul>
                 </div>
 
             </div>
 
-            {/* Bottom Strip */}
-            <div className="mt-10 border-t border-white/20 pt-6 text-center text-white/60 text-sm">
+            <div className="text-center mt-10 text-gray-300 text-sm">
                 © {new Date().getFullYear()} Mindopiia Counselling Center. All rights reserved.
             </div>
         </footer>

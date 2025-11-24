@@ -5,7 +5,7 @@ import Hero from "./components/Hero.jsx";
 import About from "./pages/About.jsx";
 import WhyUs from "./components/WhyUs.jsx";
 import Footer from "./components/Footer.jsx";
-
+import BecomeCounsellor from "./pages/BecomeCounsellor.jsx";
 import CareerCounselling from "./pages/CareerCounselling.jsx";
 import Approaches from "./pages/Approaches.jsx"; // FULL PAGE
 
@@ -37,6 +37,10 @@ function App() {
 
                 {/* THERAPEUTIC APPROACHES PAGE */}
                 <Route path="/approaches" element={<Approaches />} />
+
+
+                <Route path="/careercounsellor" element={<BecomeCounsellor />} />
+
 
 
             </Routes>

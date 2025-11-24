@@ -32,6 +32,10 @@ export default function Navbar() {
                     <Link to="/career" className="hover:text-[#07406b] transition">
                         Career Counselling
                     </Link>
+
+                    <Link to="/careercounsellor" className="hover:text-[#07406b] transition">
+                        Become a Career Counsellor
+                    </Link>
                 </div>
 
                 {/* Mobile Menu Button */}
@@ -58,6 +62,10 @@ export default function Navbar() {
 
                     <Link to="/career" onClick={() => setOpen(false)} className="block py-2">
                         Career Counselling
+                    </Link>
+
+                    <Link to="/careercounsellor" className="hover:text-[#07406b] transition">
+                        Become a Career Counsellor
                     </Link>
                 </div>
             )}

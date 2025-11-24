@@ -2,12 +2,17 @@ import { Routes, Route } from "react-router-dom";
 
 import Navbar from "./components/Navbar.jsx";
 import Hero from "./components/Hero.jsx";
-import About from "./pages/About.jsx";
 import WhyUs from "./components/WhyUs.jsx";
 import Footer from "./components/Footer.jsx";
-import BecomeCounsellor from "./pages/BecomeCounsellor.jsx";
+
+// PAGES
+import About from "./pages/About.jsx";
+import Approaches from "./pages/Approaches.jsx";
 import CareerCounselling from "./pages/CareerCounselling.jsx";
-import Approaches from "./pages/Approaches.jsx"; // FULL PAGE
+import BecomeCounsellor from "./pages/BecomeCounsellor.jsx";
+import Volunteer from "./pages/Volunteer.jsx";
+import FAQ from "./pages/FAQ.jsx";
+import Admin from "./pages/Admin.jsx";
 
 function App() {
     return (
@@ -15,7 +20,10 @@ function App() {
             <Navbar />
 
             <Routes>
+
+                {/* -------------------------- */}
                 {/* HOME PAGE */}
+                {/* -------------------------- */}
                 <Route
                     path="/"
                     element={
@@ -29,19 +37,16 @@ function App() {
                     }
                 />
 
-
-                {/* CAREER PAGE */}
+                {/* -------------------------- */}
+                {/* STATIC PAGES */}
+                {/* -------------------------- */}
                 <Route path="/about" element={<About />} />
-                {/* CAREER PAGE */}
-                <Route path="/career" element={<CareerCounselling />} />
-
-                {/* THERAPEUTIC APPROACHES PAGE */}
                 <Route path="/approaches" element={<Approaches />} />
-
-
+                <Route path="/career" element={<CareerCounselling />} />
                 <Route path="/careercounsellor" element={<BecomeCounsellor />} />
-
-
+                <Route path="/volunteer" element={<Volunteer />} />
+                <Route path="/faq" element={<FAQ />} />
+                <Route path="/admin" element={<Admin />} />
 
             </Routes>
         </>

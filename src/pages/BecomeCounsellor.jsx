@@ -1,6 +1,13 @@
 import React from "react";
 
 export default function BecomeCounsellor() {
+
+    // Pre-filled WhatsApp message
+    const waMsg = encodeURIComponent(
+        "Hello, I want to enquire about becoming a Career Counsellor at Mindopiia."
+    );
+    const waLink = `https://wa.me/917977482411?text=${waMsg}`;
+
     return (
         <div className="pt-28">
 
@@ -17,12 +24,12 @@ export default function BecomeCounsellor() {
 
                 <p className="mt-6 text-lg md:text-xl max-w-3xl mx-auto text-gray-700 leading-relaxed">
                     Shape futures. Empower young minds. Build a meaningful career guiding
-                    students, graduates, and professionals toward clarity and success —
-                    with Mindopiia’s elite professional training.
+                    students, graduates, and professionals toward clarity & success with
+                    Mindopiia’s elite professional counsellor training program.
                 </p>
 
                 <a
-                    href="https://wa.me/916388190328"
+                    href={waLink}
                     target="_blank"
                     className="inline-block mt-10 px-10 py-4 bg-[#0D3B66] text-white rounded-full
                                text-lg font-medium shadow-xl hover:bg-[#082f52] transition
@@ -34,34 +41,33 @@ export default function BecomeCounsellor() {
                 {/* Glass Panel */}
                 <div className="mt-16 mx-auto max-w-4xl bg-white/50 backdrop-blur-xl shadow-xl border border-white/30 rounded-2xl p-6">
                     <p className="text-[#0D3B66] text-lg font-medium">
-                        💫Certification • Live Practice • Real Assessments • Elite Mentorship
+                        💫 Certification • Live Practice • Real Assessments • Elite Mentorship
                     </p>
                 </div>
             </section>
 
-            {/* WHY BECOME A COUNSELLOR — Floating Cards */}
+            {/* WHY BECOME A COUNSELLOR */}
             <section className="px-6 py-24 bg-[#FAFBFF]">
                 <h2 className="text-3xl md:text-4xl font-bold text-center text-[#0D3B66]">
                     Why Choose Career Counselling as a Profession?
                 </h2>
 
                 <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto">
-
                     {[
                         {
                             icon: "✨",
                             title: "High Growth Field",
-                            desc: "Schools, colleges, and corporates actively seek trained counselling professionals."
+                            desc: "Schools, colleges & corporates actively seek trained counselling professionals."
                         },
                         {
                             icon: "💛",
                             title: "Deeply Rewarding",
-                            desc: "Be the guiding force helping people choose fulfilling, emotionally aligned careers."
+                            desc: "Guide people into careers aligned with their strengths & emotional well-being."
                         },
                         {
                             icon: "🌟",
                             title: "Independent Practice",
-                            desc: "Earn through private sessions, workshops, school tie-ups and corporate programs."
+                            desc: "Earn through private sessions, workshops, school tie-ups & corporate programs."
                         }
                     ].map((item, index) => (
                         <div
@@ -81,14 +87,13 @@ export default function BecomeCounsellor() {
                 </div>
             </section>
 
-            {/* CURRICULUM SECTION — Premium Timeline */}
+            {/* CURRICULUM SECTION */}
             <section className="px-6 py-24 bg-gradient-to-b from-white to-[#F1F5FF]">
                 <h2 className="text-3xl md:text-4xl font-bold text-center text-[#0D3B66]">
                     What You Will Learn
                 </h2>
 
                 <div className="mt-16 max-w-4xl mx-auto space-y-8">
-
                     {[
                         "Career assessment tools & interpretation",
                         "Stream selection & career path mapping",
@@ -110,7 +115,7 @@ export default function BecomeCounsellor() {
                 </div>
             </section>
 
-            {/* WHY MINDOPIIA — Gold Glow Section */}
+            {/* WHY MINDOPIIA */}
             <section className="px-6 py-24 bg-[#0D3B66] text-white relative overflow-hidden">
 
                 <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,#FFFFFF55,#0D3B66)]"></div>
@@ -121,28 +126,27 @@ export default function BecomeCounsellor() {
                     </h2>
 
                     <p className="mt-4 max-w-3xl mx-auto text-gray-200 text-lg">
-                        Led by <strong>Nisha Shah</strong>, Founder & CEO, this program blends
-                        psychological expertise with real-world counselling experience —
-                        giving you clarity, structure, and confidence.
+                        Led by <strong>Nisha Shah</strong>, Founder & CEO — this program blends
+                        psychological depth with practical industry-ready training to help
+                        you become a confident and respected counsellor.
                     </p>
 
                     <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-10">
-
                         {[
                             {
                                 icon: "🏅",
                                 title: "Certification",
-                                desc: "Receive a professional certificate after evaluation."
+                                desc: "Get professionally evaluated & certified after training."
                             },
                             {
                                 icon: "🧠",
                                 title: "Psychology + Practicality",
-                                desc: "Learn both emotional understanding & career frameworks."
+                                desc: "Emotional understanding + career frameworks = holistic learning."
                             },
                             {
                                 icon: "🤝",
-                                title: "Live Practice",
-                                desc: "Mock sessions, role-plays, worksheets & supervised practice."
+                                title: "Live Practice Sessions",
+                                desc: "Mock sessions, worksheets, roleplays & supervised counselling practice."
                             }
                         ].map((item, idx) => (
                             <div
@@ -165,15 +169,14 @@ export default function BecomeCounsellor() {
                 </h2>
 
                 <p className="mt-4 text-gray-600 max-w-xl mx-auto text-lg">
-                    Join Mindopiia’s elite training and become a certified, confident and
-                    respected Career Counsellor.
+                    Join Mindopiia’s elite counsellor training program and begin a purposeful,
+                    respected and impactful counselling career.
                 </p>
 
                 <a
-                    href="https://wa.me/916388190328"
+                    href={waLink}
                     target="_blank"
-                    className="inline-block mt-10 px-10 py-4 bg-[#0D3B66] text-white rounded-full text-lg
-                               shadow-xl hover:bg-[#082f52] transition"
+                    className="inline-block mt-10 px-10 py-4 bg-[#0D3B66] text-white rounded-full text-lg shadow-xl hover:bg-[#082f52] transition"
                 >
                     Talk to Us on WhatsApp
                 </a>

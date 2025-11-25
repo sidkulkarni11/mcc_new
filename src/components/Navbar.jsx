@@ -86,9 +86,9 @@ export default function Navbar() {
                         Volunteer
                     </Link>
 
-                   {/* <Link to="/events" onClick={() => setOpen(false)} className="block">
+                    <Link to="/events" onClick={() => setOpen(false)} className="block">
                         Growth & Expression Events
-                    </Link>*/}
+                    </Link>
 
 
                 </div>

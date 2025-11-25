@@ -12,6 +12,7 @@ import CareerCounselling from "./pages/CareerCounselling.jsx";
 import BecomeCounsellor from "./pages/BecomeCounsellor.jsx";
 import Volunteer from "./pages/Volunteer.jsx";
 import FAQ from "./pages/FAQ.jsx";
+import Competitions from "./pages/Competitions.jsx";
 import Admin from "./pages/Admin.jsx";
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
                <Route path="/careercounsellor" element={<BecomeCounsellor />} />
                 <Route path="/volunteer" element={<Volunteer />} />
                 <Route path="/faq" element={<FAQ />} />
+                <Route path="/events" element={<Competitions />} />
                 {/*<Route path="/admin" element={<Admin />} />*/}
 
             </Routes>

@@ -43,10 +43,10 @@ function App() {
                 <Route path="/about" element={<About />} />
                 <Route path="/approaches" element={<Approaches />} />
                 <Route path="/career" element={<CareerCounselling />} />
-                <Route path="/careercounsellor" element={<BecomeCounsellor />} />
+               <Route path="/careercounsellor" element={<BecomeCounsellor />} />
                 <Route path="/volunteer" element={<Volunteer />} />
                 <Route path="/faq" element={<FAQ />} />
-                <Route path="/admin" element={<Admin />} />
+                {/*<Route path="/admin" element={<Admin />} />*/}
 
             </Routes>
         </>

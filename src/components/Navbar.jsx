@@ -3,19 +3,15 @@ import logo from "../assets/mcc_logo.jpg";
 import { Link } from "react-router-dom";
 
 export default function Navbar() {
-    const [open, setOpen] = useState(false);
+    const [menuOpen, setMenuOpen] = useState(false);
 
     return (
-        <nav className="fixed top-0 left-0 w-full z-50 bg-white/80 backdrop-blur-xl shadow-sm border-b border-gray-200">
+        <nav className="fixed top-0 left-0 w-full z-50 bg-white/80 backdrop-blur-lg shadow-sm">
             <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
 
-                {/* LOGO + NAME */}
+                {/* LOGO */}
                 <Link to="/" className="flex items-center gap-3">
-                    <img
-                        src={logo}
-                        className="h-10 w-auto object-contain"
-                        alt="Mindopiia Logo"
-                    />
+                    <img src={logo} className="h-9 w-auto" alt="Mindopiia Logo" />
                     <span className="font-semibold text-lg text-[#0D3B66] whitespace-nowrap">
                         Mindopiia Counselling Center
                     </span>
@@ -28,69 +24,54 @@ export default function Navbar() {
                         About
                     </Link>
 
-                    <Link to="/approaches" className="hover:text-[#07406b] transition">
-                        Approaches
+                    {/* SINGLE SERVICES PAGE */}
+                    <Link to="/services" className="hover:text-[#07406b] transition whitespace-nowrap">
+                        Services
                     </Link>
 
-                    <Link to="/career" className="hover:text-[#07406b] transition whitespace-nowrap">
-                        Career Counselling
-                    </Link>
-
-                    <Link to="/careercounsellor" className="hover:text-[#07406b] transition whitespace-nowrap">
-                        Become a Counsellor
-                    </Link>
-
-                    <Link to="/volunteer" className="hover:text-[#07406b] transition whitespace-nowrap">
-                        Volunteer
-                    </Link>
-
-                    <Link to="/events" className="hover:text-[#07406b] transition whitespace-nowrap">
+                    <Link
+                        to="/events"
+                        className="hover:text-[#07406b] transition whitespace-nowrap"
+                    >
                         Growth & Expression Events
                     </Link>
 
-                    {/*<Link to="/admin" className="hover:text-[#07406b] transition font-semibold whitespace-nowrap">
+                   {/* <Link
+                        to="/admin"
+                        className="hover:text-[#07406b] transition whitespace-nowrap"
+                    >
                         Control Center
                     </Link>*/}
                 </div>
 
-                {/* MOBILE MENU BTN */}
+                {/* MOBILE MENU BUTTON */}
                 <button
-                    onClick={() => setOpen(!open)}
+                    onClick={() => setMenuOpen(!menuOpen)}
                     className="md:hidden text-[#0D3B66] text-3xl"
                 >
-                    {open ? "✖" : "☰"}
+                    {menuOpen ? "✖" : "☰"}
                 </button>
             </div>
 
             {/* MOBILE DROPDOWN */}
-            {open && (
-                <div className="md:hidden bg-white/95 backdrop-blur-xl shadow-xl py-5 px-6 space-y-4 text-[#0D3B66] font-medium border-t">
+            {menuOpen && (
+                <div className="md:hidden bg-white/95 backdrop-blur-lg shadow-md py-4 px-6 space-y-4 text-[#0D3B66]">
 
-                    <Link to="/about" onClick={() => setOpen(false)} className="block">
+                    <Link to="/about" onClick={() => setMenuOpen(false)} className="block">
                         About
                     </Link>
 
-                    <Link to="/approaches" onClick={() => setOpen(false)} className="block">
-                        Approaches
+                    <Link to="/services" onClick={() => setMenuOpen(false)} className="block">
+                        Services
                     </Link>
 
-                    <Link to="/career" onClick={() => setOpen(false)} className="block">
-                        Career Counselling
+                    <Link to="/events" onClick={() => setMenuOpen(false)} className="block">
+                        Events
                     </Link>
 
-                    <Link to="/careercounsellor" onClick={() => setOpen(false)} className="block">
-                        Become a Counsellor
-                    </Link>
-
-                    <Link to="/volunteer" onClick={() => setOpen(false)} className="block">
-                        Volunteer
-                    </Link>
-
-                    <Link to="/events" onClick={() => setOpen(false)} className="block">
-                        Growth & Expression Events
-                    </Link>
-
-
+                   {/* <Link to="/admin" onClick={() => setMenuOpen(false)} className="block">
+                        Control Center
+                    </Link>*/}
                 </div>
             )}
         </nav>

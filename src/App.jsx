@@ -7,13 +7,11 @@ import Footer from "./components/Footer.jsx";
 
 // PAGES
 import About from "./pages/About.jsx";
-import Approaches from "./pages/Approaches.jsx";
-import CareerCounselling from "./pages/CareerCounselling.jsx";
-import BecomeCounsellor from "./pages/BecomeCounsellor.jsx";
+import Services from "./pages/Services.jsx";   // ⭐ NEW COMBINED PAGE
 import Volunteer from "./pages/Volunteer.jsx";
 import FAQ from "./pages/FAQ.jsx";
 import Competitions from "./pages/Competitions.jsx";
-import Admin from "./pages/Admin.jsx";
+import Admin from "./pages/Admin.jsx";  // Will enable after login setup
 
 function App() {
     return (
@@ -31,7 +29,6 @@ function App() {
                         <>
                             <Hero />
                             <About />
-                            <Approaches />
                             <WhyUs />
                             <Footer />
                         </>
@@ -39,16 +36,14 @@ function App() {
                 />
 
                 {/* -------------------------- */}
-                {/* STATIC PAGES */}
+                {/* MAIN STATIC PAGES */}
                 {/* -------------------------- */}
                 <Route path="/about" element={<About />} />
-                <Route path="/approaches" element={<Approaches />} />
-                <Route path="/career" element={<CareerCounselling />} />
-               <Route path="/careercounsellor" element={<BecomeCounsellor />} />
+                <Route path="/services" element={<Services />} />
                 <Route path="/volunteer" element={<Volunteer />} />
                 <Route path="/faq" element={<FAQ />} />
                 <Route path="/events" element={<Competitions />} />
-                {/*<Route path="/admin" element={<Admin />} />*/}
+                <Route path="/admin" element={<Admin />} />
 
             </Routes>
         </>

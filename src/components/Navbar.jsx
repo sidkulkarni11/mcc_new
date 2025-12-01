@@ -33,7 +33,11 @@ export default function Navbar() {
                         to="/events"
                         className="hover:text-[#07406b] transition whitespace-nowrap"
                     >
-                        Growth & Expression Events
+                        Events
+                    </Link>
+
+                    <Link to="/volunteer" onClick={() => setMenuOpen(false)} className="block">
+                        Volunteer
                     </Link>
 
                    {/* <Link
@@ -67,6 +71,10 @@ export default function Navbar() {
 
                     <Link to="/events" onClick={() => setMenuOpen(false)} className="block">
                         Events
+                    </Link>
+
+                    <Link to="/volunteer" onClick={() => setMenuOpen(false)} className="block">
+                        Volunteer
                     </Link>
 
                    {/* <Link to="/admin" onClick={() => setMenuOpen(false)} className="block">

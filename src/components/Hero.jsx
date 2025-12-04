@@ -10,7 +10,6 @@ import img1 from "../webphotos/nisha1.jpeg";
 import img2 from "../webphotos/nisha2.jpeg";
 import img3 from "../webphotos/nisha3.jpeg";
 import img4 from "../webphotos/nisha4.jpeg";
-import img5 from "../webphotos/nisha5.jpeg";
 import img6 from "../webphotos/nisha6.jpeg";
 
 export default function Hero() {
@@ -21,17 +20,24 @@ export default function Hero() {
     );
 
     return (
-        <section className="relative bg-[#F5F8FF] pb-32">
+        <section className="bg-[#F5F8FF]">
 
-            {/* ---------- FULL EDGE-TO-EDGE CAROUSEL ---------- */}
-            <div className="relative w-full mx-auto">
+            {/* ---------- FULL WIDTH CAROUSEL ---------- */}
+            <div className="w-full">
                 <Swiper
                     modules={[Autoplay, Pagination, EffectFade]}
                     autoplay={{ delay: 2500 }}
                     effect="fade"
                     pagination={{ clickable: true }}
                     loop
-                    className="w-full h-[550px] md:h-[620px] lg:h-[680px]"
+                    className="
+                        w-full
+                        h-[300px]
+                        sm:h-[380px]
+                        md:h-[500px]
+                        lg:h-[580px]
+                        xl:h-[650px]
+                    "
                 >
                     {images.map((img, index) => (
                         <SwiperSlide key={index}>
@@ -45,46 +51,59 @@ export default function Hero() {
                 </Swiper>
             </div>
 
-            {/* ---------- PREMIUM GLASSMORPHIC OVERLAY BOX ---------- */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
-                            w-[90%] md:w-[70%] lg:w-[55%]
-                            bg-white/30 backdrop-blur-xl border border-white/40
-                            shadow-2xl rounded-3xl p-10 text-center">
+            {/* ---------- CONTENT SECTION BELOW ---------- */}
+            <div className="max-w-5xl mx-auto px-6 py-16 text-center">
 
-                <h1 className="text-4xl md:text-6xl font-extrabold text-[#0D2440] tracking-tight">
+                <h1
+                    className="
+                        text-3xl sm:text-4xl md:text-5xl lg:text-6xl
+                        font-extrabold text-[#0D2440]
+                        tracking-tight
+                    "
+                >
                     Heal. Grow. Transform.
                 </h1>
 
-                <p className="mt-6 text-lg md:text-xl text-gray-800 leading-relaxed max-w-2xl mx-auto">
+                <p
+                    className="
+                        mt-6 text-base sm:text-lg md:text-xl
+                        text-gray-700 leading-relaxed max-w-2xl mx-auto
+                    "
+                >
                     A premium therapeutic experience — where science meets empathy.
                     Step into a space designed for clarity, calm, and emotional freedom.
                 </p>
 
-                {/* CTA Buttons */}
-                <div className="mt-10 flex flex-col sm:flex-row gap-6 justify-center">
+                <div className="mt-10 flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
 
-                    {/* WhatsApp Button */}
                     <a
                         href={`https://wa.me/917977482411?text=${whatsappMessage}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-10 py-4 rounded-full bg-[#0D3B66] text-white text-lg
-                                   shadow-xl hover:bg-[#082742] transition-all"
+                        className="
+                            px-10 py-4 bg-[#0D3B66] text-white
+                            rounded-full text-lg shadow-lg
+                            hover:bg-[#082742] transition-all
+                            w-full sm:w-auto
+                        "
                     >
                         Book an Appointment
                     </a>
 
-                    {/* Services Button */}
                     <a
                         href="/services"
-                        className="px-10 py-4 rounded-full border border-[#0D3B66] text-[#0D3B66]
-                                   text-lg font-medium hover:bg-[#E5EEFF] transition-all"
+                        className="
+                            px-10 py-4 border border-[#0D3B66] text-[#0D3B66]
+                            rounded-full text-lg font-medium
+                            hover:bg-[#E5EEFF] transition-all
+                            w-full sm:w-auto
+                        "
                     >
                         Explore Services
                     </a>
+
                 </div>
             </div>
-
         </section>
     );
 }

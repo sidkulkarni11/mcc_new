@@ -7,11 +7,12 @@ import Footer from "./components/Footer.jsx";
 
 // PAGES
 import About from "./pages/About.jsx";
-import Services from "./pages/Services.jsx";   // ⭐ NEW COMBINED PAGE
+import Services from "./pages/Services.jsx";
 import Volunteer from "./pages/Volunteer.jsx";
 import FAQ from "./pages/FAQ.jsx";
 import Competitions from "./pages/Competitions.jsx";
-import Admin from "./pages/Admin.jsx";  // Will enable after login setup
+import Admin from "./pages/Admin.jsx";
+import DigitalProducts from "./pages/DigitalProducts.jsx"; // ⭐ NEW PAGE
 
 function App() {
     return (
@@ -36,10 +37,11 @@ function App() {
                 />
 
                 {/* -------------------------- */}
-                {/* MAIN STATIC PAGES */}
+                {/* STATIC PAGES */}
                 {/* -------------------------- */}
                 <Route path="/about" element={<About />} />
                 <Route path="/services" element={<Services />} />
+                <Route path="/digital-products" element={<DigitalProducts />} /> {/* ⭐ NEW */}
                 <Route path="/volunteer" element={<Volunteer />} />
                 <Route path="/faq" element={<FAQ />} />
                 <Route path="/events" element={<Competitions />} />

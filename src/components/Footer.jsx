@@ -28,7 +28,6 @@ export default function Footer() {
                         <li><Link to="/approaches" className="hover:text-white">Therapeutic Approaches</Link></li>
                         <li><Link to="/career" className="hover:text-white">Career Counselling</Link></li>
                         <li><Link to="/volunteer" className="hover:text-white">Volunteer</Link></li>
-                        <li><Link to="/careercounsellor" className="hover:text-white">Become a Career Counsellor</Link></li>
                         <li><Link to="/faq" className="hover:text-white">FAQ</Link></li>
                     </ul>
                 </div>

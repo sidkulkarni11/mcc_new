@@ -25,8 +25,7 @@ export default function Footer() {
                     <ul className="mt-5 space-y-3 text-gray-300 text-sm leading-relaxed">
                         <li><Link to="/" className="hover:text-white">Home</Link></li>
                         <li><Link to="/about" className="hover:text-white">About</Link></li>
-                        <li><Link to="/approaches" className="hover:text-white">Therapeutic Approaches</Link></li>
-                        <li><Link to="/career" className="hover:text-white">Career Counselling</Link></li>
+                        <li><Link to="/services" className="hover:text-white">Services</Link></li>
                         <li><Link to="/volunteer" className="hover:text-white">Volunteer</Link></li>
                         <li><Link to="/faq" className="hover:text-white">FAQ</Link></li>
                     </ul>

@@ -12,7 +12,11 @@ import Volunteer from "./pages/Volunteer.jsx";
 import FAQ from "./pages/FAQ.jsx";
 import Competitions from "./pages/Competitions.jsx";
 import Admin from "./pages/Admin.jsx";
-import DigitalProducts from "./pages/DigitalProducts.jsx"; // ⭐ NEW PAGE
+import DigitalProducts from "./pages/DigitalProducts.jsx";
+import Blogs from "./pages/Blogs.jsx";
+import BlogDetails from "./pages/BlogDetails.jsx";   // ⭐ FIXED — Must be imported
+import Assessment from "./pages/Assessment.jsx";
+import AdminDecoder from "./pages/AdminDecoder.jsx";
 
 function App() {
     return (
@@ -41,11 +45,19 @@ function App() {
                 {/* -------------------------- */}
                 <Route path="/about" element={<About />} />
                 <Route path="/services" element={<Services />} />
-                <Route path="/digital-products" element={<DigitalProducts />} /> {/* ⭐ NEW */}
+                <Route path="/digital-products" element={<DigitalProducts />} />
                 <Route path="/volunteer" element={<Volunteer />} />
                 <Route path="/faq" element={<FAQ />} />
                 <Route path="/events" element={<Competitions />} />
+                <Route path="/assessment" element={<Assessment />} />
                 <Route path="/admin" element={<Admin />} />
+
+                {/* -------------------------- */}
+                {/* BLOG SYSTEM */}
+                {/* -------------------------- */}
+                <Route path="/blogs" element={<Blogs />} />
+                <Route path="/blogs/:slug" element={<BlogDetails />} />
+                <Route path="/admindecoder" element={<AdminDecoder />} />
 
             </Routes>
         </>

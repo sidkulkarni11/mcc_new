@@ -40,9 +40,16 @@ export default function Navbar() {
                         Events
                     </Link>
 
+                    <Link to="/blogs" className="hover:text-[#07385a] transition-all">
+                        Blogs
+                    </Link>
+
+                    <Link to="/assessment" className="hover:text-[#07406b] transition">Assessment</Link>
+
                     <Link to="/volunteer" className="hover:text-[#07385a] transition-all whitespace-nowrap">
                         Volunteer
                     </Link>
+
                 </div>
 
                 {/* MOBILE MENU BUTTON */}
@@ -77,6 +84,8 @@ export default function Navbar() {
                     <Link to="/events" onClick={() => setMenuOpen(false)} className="block">
                         Events
                     </Link>
+
+                    <Link to="/assessment" className="hover:text-[#07406b] transition">Assessment</Link>
 
                     <Link to="/volunteer" onClick={() => setMenuOpen(false)} className="block">
                         Volunteer

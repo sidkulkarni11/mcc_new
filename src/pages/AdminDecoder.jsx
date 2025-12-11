@@ -1,14 +1,20 @@
 import React, { useState } from "react";
 
-const TEST_LABELS = {
-    DEP: "Depression Assessment",
-    ANX: "Anxiety Assessment",
-    CGC: "Career Goal Clarity",
-    REL: "Relationship Health Check",
-    SEX: "Sexual Well-Being Check",
-    NEW: "New Relationship Readiness",
+/* --------------------------------------------
+   Test Labels + Total Score per Assessment
+--------------------------------------------- */
+const TEST_META = {
+    DEP: { label: "Depression Assessment", total: 25 },
+    ANX: { label: "Anxiety Assessment", total: 25 },
+    CGC: { label: "Career Goal Clarity", total: 25 },
+    REL: { label: "Relationship Health Check", total: 25 },
+    SEX: { label: "Sexual Well-Being Check", total: 25 },
+    NEW: { label: "New Relationship Readiness", total: 25 },
 };
 
+/* --------------------------------------------
+   Decoding Engine (Safe)
+--------------------------------------------- */
 const decodeBlock = (segment) => {
     try {
         if (typeof window === "undefined") return null;
@@ -20,132 +26,224 @@ const decodeBlock = (segment) => {
     }
 };
 
+/* --------------------------------------------
+   Severity Logic (Universal)
+--------------------------------------------- */
+const getSeverity = (score, total) => {
+    const pct = (score / total) * 100;
+
+    if (pct <= 30) return { label: "Low", color: "green" };
+    if (pct <= 65) return { label: "Moderate", color: "yellow" };
+    return { label: "High", color: "red" };
+};
+
+/* --------------------------------------------
+   Feedback Generator (Professional + Polished)
+--------------------------------------------- */
 const generateFeedback = (testId, score) => {
-    const t = TEST_LABELS[testId] || "Unknown Test";
+    const { label, total } = TEST_META[testId] || {};
+    const severity = getSeverity(score, total);
 
-    const low = score <= 12;
-    const medium = score <= 20;
-    const high = score > 20;
+    const s = severity.label;
 
-    let interpretation = "";
+    let text = "";
 
     switch (testId) {
         case "DEP":
-            interpretation = low
-                ? "Your responses suggest minimal depressive symptoms."
-                : medium
-                    ? "Mild to moderate depressive indicators detected."
-                    : "High depressive symptoms — professional support is recommended.";
+            text = s === "Low"
+                ? "Your responses indicate minimal depressive symptoms."
+                : s === "Moderate"
+                    ? "Your responses indicate mild to moderate depressive indicators. Reflection and guidance may support you."
+                    : "Your responses suggest significant depressive symptoms. Professional counselling is recommended.";
             break;
 
         case "ANX":
-            interpretation = low
-                ? "Anxiety indicators appear low."
-                : medium
-                    ? "Moderate anxiety indicators present."
-                    : "High anxiety indicators detected — counselling may help.";
+            text = s === "Low"
+                ? "You exhibit low anxiety symptoms and good emotional balance."
+                : s === "Moderate"
+                    ? "Moderate anxiety symptoms detected. Stress-management strategies may support you."
+                    : "High anxiety symptoms detected. Therapeutic support may be helpful.";
             break;
 
         case "CGC":
-            interpretation = low
-                ? "Career clarity seems low — exploration needed."
-                : medium
-                    ? "Moderate clarity — some direction is forming."
-                    : "Strong clarity about career goals.";
+            text = s === "Low"
+                ? "Your career clarity appears low — exploring strengths & values can help."
+                : s === "Moderate"
+                    ? "You have partial clarity. Structured goal-setting may be helpful."
+                    : "You show strong clarity and direction in your career path.";
             break;
 
         case "REL":
-            interpretation = low
-                ? "Relationship may have emotional gaps."
-                : medium
-                    ? "Balanced but with areas to improve."
-                    : "Relationship appears emotionally healthy.";
+            text = s === "Low"
+                ? "Your responses indicate emotional gaps or concerns in the relationship."
+                : s === "Moderate"
+                    ? "Your relationship has both strengths and areas to reflect on."
+                    : "Your relationship appears emotionally healthy and balanced.";
             break;
 
         case "SEX":
-            interpretation = low
-                ? "Concerns around intimacy/comfort may be present."
-                : medium
-                    ? "Moderate stability with room for improvement."
-                    : "Healthy sexual and emotional connection.";
+            text = s === "Low"
+                ? "There may be concerns around intimacy, communication, or comfort."
+                : s === "Moderate"
+                    ? "Your sexual well-being is moderately stable with areas to strengthen."
+                    : "You show healthy emotional & physical intimacy patterns.";
             break;
 
         case "NEW":
-            interpretation = low
-                ? "You may not yet be ready for a new relationship."
-                : medium
-                    ? "Partially ready — some emotional areas need space."
-                    : "You appear ready for a new beginning.";
+            text = s === "Low"
+                ? "You may not yet be emotionally ready for a new relationship."
+                : s === "Moderate"
+                    ? "Partially ready — some emotional areas may need attention."
+                    : "You appear emotionally ready for a new relationship.";
             break;
 
         default:
-            interpretation = "Unable to interpret this code.";
+            text = "Unable to interpret this code.";
     }
 
-    return `
-Assessment: ${t}
-Score: ${score}
-
-Summary:
-${interpretation}
-
-If you'd like, I can guide you with next steps.`;
+    return { label, text, severity };
 };
 
+/* --------------------------------------------
+   Main Component
+--------------------------------------------- */
 export default function AdminDecoder() {
     const [input, setInput] = useState("");
-    const [response, setResponse] = useState("");
+    const [notes, setNotes] = useState("");
+    const [result, setResult] = useState(null);
+    const [copyText, setCopyText] = useState("");
 
-    const decode = () => {
+    const decodeNow = () => {
         try {
             const parts = input.trim().split("-");
-            if (parts.length < 3) throw new Error();
+            if (parts.length < 2) throw new Error();
 
             const testId = decodeBlock(parts[0]);
-            const rawScore = decodeBlock(parts[1]);
+            const score = Number(decodeBlock(parts[1]));
 
-            if (!testId || !rawScore || isNaN(rawScore)) throw new Error();
+            if (!testId || isNaN(score)) throw new Error();
 
-            const feedback = generateFeedback(testId, Number(rawScore));
-            setResponse(feedback);
+            const meta = TEST_META[testId];
+            if (!meta) throw new Error();
+
+            const feedback = generateFeedback(testId, score);
+
+            const pct = Math.round((score / meta.total) * 100);
+
+            const formatted = `
+${meta.label}
+Score: ${score}/${meta.total} (${pct}%)
+Severity Level: ${feedback.severity.label}
+
+Summary:
+${feedback.text}
+
+${notes ? "Additional Notes:\n" + notes : ""}
+            `.trim();
+
+            setResult({
+                testId,
+                score,
+                total: meta.total,
+                pct,
+                ...feedback,
+                formatted,
+            });
+
+            setCopyText(formatted);
+
         } catch {
-            setResponse("❌ Invalid code. Please check and try again.");
+            setResult({
+                error: true,
+                formatted: "❌ Invalid code. Please recheck and try again."
+            });
+
+            setCopyText("Invalid code.");
         }
     };
 
     return (
-        <div className="pt-32 px-6 min-h-screen bg-[#F6F9FF]">
-            <div className="max-w-3xl mx-auto bg-white shadow-xl p-10 rounded-3xl border border-gray-200">
-                <h1 className="text-4xl font-extrabold text-center text-[#0D3B66] mb-6">
+        <div className="pt-32 px-6 min-h-screen bg-[#F4F7FF]">
+            <div className="max-w-3xl mx-auto bg-white shadow-xl p-10 rounded-3xl border border-gray-200 animate-fadeIn">
+
+                {/* Title */}
+                <h1 className="text-4xl font-extrabold text-center text-[#0D3B66] mb-4">
                     Admin Assessment Decoder
                 </h1>
+                <p className="text-center text-gray-600 mb-6">
+                    Decode any client’s encrypted assessment code instantly.
+                </p>
 
+                {/* Input */}
                 <textarea
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
-                    placeholder="Enter assessment code here"
-                    className="w-full p-4 border rounded-xl text-gray-700 shadow-sm mb-4"
-                    rows={2}
+                    placeholder="Paste encrypted code (ex: REFT-MTA-9AB)"
+                    className="w-full p-4 border rounded-xl shadow-sm mb-4 text-gray-700"
                 />
 
+                {/* Admin Notes */}
+                <textarea
+                    value={notes}
+                    onChange={(e) => setNotes(e.target.value)}
+                    placeholder="Optional: Add admin notes (included in final response)"
+                    className="w-full p-4 border rounded-xl shadow-sm mb-4 text-gray-700"
+                />
+
+                {/* Decode Button */}
                 <button
-                    onClick={decode}
-                    className="w-full py-3 bg-[#0D3B66] text-white rounded-full font-semibold hover:bg-[#093055]"
+                    onClick={decodeNow}
+                    className="w-full py-3 bg-[#0D3B66] text-white rounded-full font-semibold hover:bg-[#082c52]"
                 >
                     Decode
                 </button>
 
-                {response && (
-                    <div className="mt-8 bg-[#F7F9FF] p-6 rounded-2xl shadow-inner border border-gray-200">
-                        <h2 className="text-2xl font-bold text-[#0D3B66] mb-3">Result</h2>
+                {/* Results */}
+                {result && (
+                    <div className="mt-8 bg-[#F7F9FF] p-6 rounded-2xl border shadow-inner animate-slideUp">
 
-                        <pre className="whitespace-pre-line text-gray-700 text-md">{response}</pre>
+                        {!result.error && (
+                            <>
+                                <p className="text-xl font-bold text-[#0D3B66]">
+                                    {result.label}
+                                </p>
 
+                                <p className="mt-2 text-gray-700">
+                                    <b>Score:</b> {result.score}/{result.total}
+                                    <span className="ml-2">({result.pct}%)</span>
+                                </p>
+
+                                {/* Severity Badge */}
+                                <span
+                                    className={`mt-3 inline-block px-4 py-1 rounded-full text-sm font-semibold text-white ${
+                                        result.severity.color === "green"
+                                            ? "bg-green-600"
+                                            : result.severity.color === "yellow"
+                                                ? "bg-yellow-500"
+                                                : "bg-red-600"
+                                    }`}
+                                >
+                                    {result.severity.label} Severity
+                                </span>
+
+                                <pre className="mt-6 whitespace-pre-line text-gray-700">
+                                    {result.formatted}
+                                </pre>
+                            </>
+                        )}
+
+                        {result.error && (
+                            <p className="text-red-600 font-semibold text-center">
+                                {result.formatted}
+                            </p>
+                        )}
+
+                        {/* Copy Button */}
                         <button
-                            onClick={() => navigator.clipboard.writeText(response)}
-                            className="mt-4 w-full bg-[#0D3B66] text-white py-2 rounded-full hover:bg-[#082c52]"
+                            onClick={() => navigator.clipboard.writeText(copyText)}
+                            className="mt-6 w-full bg-[#0D3B66] text-white py-2 rounded-full hover:bg-[#082c52]"
                         >
-                            Copy Response
+                            Copy Full Response
                         </button>
                     </div>
                 )}

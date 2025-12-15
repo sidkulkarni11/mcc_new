@@ -1,5 +1,5 @@
 import React from "react";
-import therapistImg from "../assets/nishaclinic.jpeg";
+import therapistImg from "../assets/nishaclinic.png";
 
 export default function About() {
 

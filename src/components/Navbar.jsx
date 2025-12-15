@@ -9,10 +9,10 @@ export default function Navbar() {
         <nav className="fixed top-0 left-0 w-full z-50 bg-white/80 backdrop-blur-xl border-b border-white/60 shadow-sm">
             <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
 
-                {/* LOGO */}
-                <Link to="/" className="flex items-center gap-3">
+                {/* LOGO + TEXT LEFT */}
+                <Link to="/" className="flex items-center gap-2">
                     <img src={logo} className="h-9 w-auto" alt="Mindopiia Logo" />
-                    <span className="font-semibold text-lg text-[#0D3B66] tracking-tight whitespace-nowrap">
+                    <span className="font-normal text-[15px] text-[#0D3B66] leading-none whitespace-nowrap">
                         Mindopiia Counselling Center
                     </span>
                 </Link>
@@ -44,7 +44,9 @@ export default function Navbar() {
                         Blogs
                     </Link>
 
-                    <Link to="/assessment" className="hover:text-[#07406b] transition">Assessment</Link>
+                    <Link to="/assessment" className="hover:text-[#07406b] transition">
+                        Assessment
+                    </Link>
 
                     <Link to="/volunteer" className="hover:text-[#07385a] transition-all whitespace-nowrap">
                         Volunteer
@@ -85,7 +87,9 @@ export default function Navbar() {
                         Events
                     </Link>
 
-                    <Link to="/assessment" className="hover:text-[#07406b] transition">Assessment</Link>
+                    <Link to="/assessment" onClick={() => setMenuOpen(false)} className="block">
+                        Assessment
+                    </Link>
 
                     <Link to="/volunteer" onClick={() => setMenuOpen(false)} className="block">
                         Volunteer

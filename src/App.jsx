@@ -50,7 +50,7 @@ function App() {
                 <Route path="/faq" element={<FAQ />} />
                 <Route path="/events" element={<Competitions />} />
                 <Route path="/assessment" element={<Assessment />} />
-                <Route path="/admin" element={<Admin />} />
+                {/*<Route path="/admin" element={<Admin />} />*/}
 
                 {/* -------------------------- */}
                 {/* BLOG SYSTEM */}

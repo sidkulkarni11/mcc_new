@@ -66,7 +66,7 @@ export default function Footer() {
                         <div className="flex items-start gap-3">
                             <span className="text-lg">✉️</span>
                             <a
-                                href="mailto:mindopiia@gmail.com"
+                                href="mailto:mindopiapsychologist@gmail.com"
                                 className="hover:text-white break-all"
                             >
                                 mindopiia@gmail.com

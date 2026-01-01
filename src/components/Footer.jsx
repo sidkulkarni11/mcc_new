@@ -69,7 +69,7 @@ export default function Footer() {
                                 href="mailto:mindopiapsychologist@gmail.com"
                                 className="hover:text-white break-all"
                             >
-                                mindopiia@gmail.com
+                                mindopiapsychologist@gmail.com
                             </a>
                         </div>
 

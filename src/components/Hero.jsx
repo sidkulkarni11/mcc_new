@@ -20,10 +20,15 @@ export default function Hero() {
     );
 
     return (
-        <section className="bg-[#F5F8FF]">
+        <section className="bg-[#F5F8FF] pt-[85px] sm:pt-[95px]">
+            {/* Padding added to fix navbar overlap */}
 
-            {/* ---------- FULL WIDTH CAROUSEL ---------- */}
-            <div className="w-full">
+            {/* ---------- FULL WIDTH CAROUSEL with Fade Mask ---------- */}
+            <div className="relative w-full">
+
+                {/* Top Fade Overlay */}
+                <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/30 via-black/10 to-transparent pointer-events-none"></div>
+
                 <Swiper
                     modules={[Autoplay, Pagination, EffectFade]}
                     autoplay={{ delay: 2500 }}
@@ -31,12 +36,12 @@ export default function Hero() {
                     pagination={{ clickable: true }}
                     loop
                     className="
-                        w-full
-                        h-[300px]
-                        sm:h-[380px]
-                        md:h-[500px]
-                        lg:h-[580px]
-                        xl:h-[650px]
+                        w-full rounded-none
+                        h-[260px]
+                        sm:h-[340px]
+                        md:h-[470px]
+                        lg:h-[550px]
+                        xl:h-[620px]
                     "
                 >
                     {images.map((img, index) => (
@@ -44,15 +49,22 @@ export default function Hero() {
                             <img
                                 src={img}
                                 alt="Mindopiia"
-                                className="w-full h-full object-cover"
+                                className="
+                                    w-full h-full object-cover
+                                    brightness-[0.92]
+                                    sm:brightness-[0.95]
+                                "
                             />
                         </SwiperSlide>
                     ))}
                 </Swiper>
+
+                {/* Bottom Fade Overlay */}
+                <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-[#F5F8FF] to-transparent z-10"></div>
             </div>
 
-            {/* ---------- CONTENT SECTION BELOW ---------- */}
-            <div className="max-w-5xl mx-auto px-6 py-16 text-center">
+            {/* ---------- CONTENT SECTION ---------- */}
+            <div className="max-w-5xl mx-auto px-6 py-12 sm:py-16 text-center">
 
                 <h1
                     className="
@@ -66,7 +78,7 @@ export default function Hero() {
 
                 <p
                     className="
-                        mt-6 text-base sm:text-lg md:text-xl
+                        mt-5 sm:mt-6 text-base sm:text-lg md:text-xl
                         text-gray-700 leading-relaxed max-w-2xl mx-auto
                     "
                 >
@@ -74,14 +86,15 @@ export default function Hero() {
                     Step into a space designed for clarity, calm, and emotional freedom.
                 </p>
 
-                <div className="mt-10 flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
+                {/* CTA BUTTONS */}
+                <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
 
                     <a
                         href={`https://wa.me/917977482411?text=${whatsappMessage}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="
-                            px-10 py-4 bg-[#0D3B66] text-white
+                            px-10 py-3.5 sm:py-4 bg-[#0D3B66] text-white
                             rounded-full text-lg shadow-lg
                             hover:bg-[#082742] transition-all
                             w-full sm:w-auto
@@ -93,8 +106,8 @@ export default function Hero() {
                     <a
                         href="/services"
                         className="
-                            px-10 py-4 border border-[#0D3B66] text-[#0D3B66]
-                            rounded-full text-lg font-medium
+                            px-10 py-3.5 sm:py-4 border border-[#0D3B66]
+                            text-[#0D3B66] rounded-full text-lg font-medium
                             hover:bg-[#E5EEFF] transition-all
                             w-full sm:w-auto
                         "

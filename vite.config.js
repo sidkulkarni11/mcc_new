@@ -3,8 +3,9 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
-  base: "/",   // REQUIRED for custom domains
+  base: "/",       // REQUIRED for custom domain
   build: {
-    outDir: "docs", // REQUIRED for GitHub Pages
+    outDir: "docs",
   },
 });
+

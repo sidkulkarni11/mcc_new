@@ -14,6 +14,7 @@ import img4 from "../webphotos/nisha4.jpeg";
 import img6 from "../webphotos/nisha6.jpeg";
 
 export default function Hero() {
+// eslint-disable-next-line no-unused-vars
     const images = [img1, img2, img3, img4, img6];
 
     const whatsappMessage = encodeURIComponent(

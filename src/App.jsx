@@ -17,6 +17,7 @@ import Blogs from "./pages/Blogs.jsx";
 import BlogDetails from "./pages/BlogDetails.jsx";   // ⭐ FIXED — Must be imported
 import Assessment from "./pages/Assessment.jsx";
 import AdminDecoder from "./pages/AdminDecoder.jsx";
+import Workshops from "./pages/Workshops";
 
 function App() {
     return (
@@ -48,8 +49,8 @@ function App() {
                 <Route path="/digital-products" element={<DigitalProducts />} />
                 <Route path="/volunteer" element={<Volunteer />} />
                 <Route path="/faq" element={<FAQ />} />
-                <Route path="/events" element={<Competitions />} />
-                <Route path="/assessment" element={<Assessment />} />
+                <Route path="/workshops" element={<Workshops />} />
+
                 {/*<Route path="/admin" element={<Admin />} />*/}
 
                 {/* -------------------------- */}
@@ -57,6 +58,8 @@ function App() {
                 {/* -------------------------- */}
                 <Route path="/blogs" element={<Blogs />} />
                 <Route path="/blogs/:slug" element={<BlogDetails />} />
+                <Route path="/assessment" element={<Assessment />} />
+                <Route path="/events" element={<Competitions />} />
                 <Route path="/admindecoder" element={<AdminDecoder />} />
 
             </Routes>

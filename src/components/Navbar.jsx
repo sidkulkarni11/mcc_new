@@ -32,6 +32,10 @@ export default function Navbar() {
                         Services
                     </Link>
 
+                    <Link to="/workshops" className="hover:text-[#0D3B66] font-medium">
+                        Workshops
+                    </Link>
+
                     <Link to="/digital-products" className="hover:text-[#07385a] transition-all whitespace-nowrap">
                         Digital Products
                     </Link>

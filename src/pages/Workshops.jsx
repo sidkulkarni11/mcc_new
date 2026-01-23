@@ -18,7 +18,8 @@ export default function Workshops() {
     // Modal states
     const [isBookOpen, setIsBookOpen] = useState(false);
     const [selectedWorkshop, setSelectedWorkshop] = useState(null);
-    const [submitted, setSubmitted] = useState(false);
+
+    const whatsappNumber = "917977482411";
 
     const workshops = useMemo(
         () => [
@@ -119,17 +120,37 @@ export default function Workshops() {
 
     const openBookModal = (workshop) => {
         setSelectedWorkshop(workshop || null);
-        setSubmitted(false);
         setIsBookOpen(true);
     };
 
     const closeBookModal = () => {
         setIsBookOpen(false);
         setSelectedWorkshop(null);
-        setSubmitted(false);
     };
 
-    // Close on ESC
+    const openWhatsAppEnquiry = (workshop) => {
+        const workshopTitle = workshop?.title || "Mindopiia Workshops";
+        const workshopMode = workshop?.mode || "Offline / Online";
+
+        const whatsappText = `
+Hello Mindopiia 👋
+
+I want to enquire about workshops.
+
+📌 Workshop: ${workshopTitle}
+🎥 Mode: ${workshopMode}
+
+Please share details, charges & available slots.
+    `.trim();
+
+        const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+            whatsappText
+        )}`;
+
+        window.open(url, "_blank", "noopener,noreferrer");
+    };
+
+    // Close modal on ESC
     useEffect(() => {
         const onKeyDown = (e) => {
             if (e.key === "Escape" && isBookOpen) closeBookModal();
@@ -162,14 +183,15 @@ export default function Workshops() {
                                 confidence, communication, and mental health awareness.
                             </p>
 
-                            {/* CTA Row (No redirections) */}
+                            {/* CTA Row */}
                             <div className="mt-8 flex flex-col sm:flex-row gap-4">
                                 <button
                                     type="button"
+                                    onClick={() => openWhatsAppEnquiry(null)}
                                     className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-[#0D3B66] text-white rounded-full font-semibold shadow-lg hover:bg-[#082742] transition"
                                 >
                                     <FaWhatsapp className="text-xl" />
-                                    Enquire
+                                    Enquire on WhatsApp
                                 </button>
 
                                 <button
@@ -182,7 +204,7 @@ export default function Workshops() {
                                 </button>
                             </div>
 
-                            {/* Social slab (No redirections) */}
+                            {/* Social slab */}
                             <div className="mt-7 flex flex-col sm:flex-row gap-3 sm:gap-6 items-start sm:items-center">
                                 <div className="inline-flex items-center gap-2 text-[#E1306C] font-semibold">
                                     <FaInstagram />
@@ -286,10 +308,11 @@ export default function Workshops() {
                                 ))}
                             </div>
 
-                            {/* Buttons (No redirections) */}
+                            {/* Buttons */}
                             <div className="mt-7 flex flex-col sm:flex-row gap-3">
                                 <button
                                     type="button"
+                                    onClick={() => openWhatsAppEnquiry(w)}
                                     className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#0D3B66] text-white font-semibold hover:bg-[#082742] transition"
                                 >
                                     <FaWhatsapp />
@@ -333,6 +356,7 @@ export default function Workshops() {
                     <div className="mt-6 flex flex-col sm:flex-row gap-4">
                         <button
                             type="button"
+                            onClick={() => openWhatsAppEnquiry(null)}
                             className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-white text-[#0D3B66] rounded-full font-bold hover:opacity-90 transition"
                         >
                             <FaWhatsapp className="text-xl" />
@@ -356,8 +380,7 @@ export default function Workshops() {
                 <BookNowModal
                     selectedWorkshop={selectedWorkshop}
                     onClose={closeBookModal}
-                    onSubmit={() => setSubmitted(true)}
-                    submitted={submitted}
+                    whatsappNumber={whatsappNumber}
                 />
             )}
         </section>
@@ -366,18 +389,18 @@ export default function Workshops() {
 
 /* ---------- MODAL COMPONENT ---------- */
 
-function BookNowModal({ selectedWorkshop, onClose }) {
+function BookNowModal({ selectedWorkshop, onClose, whatsappNumber }) {
+    const workshopTitle = selectedWorkshop?.title || "Workshop Booking";
+    const workshopModeText = selectedWorkshop?.mode || "Offline / Online";
+
     const [form, setForm] = useState({
         name: "",
         phone: "",
         email: "",
         date: "",
-        mode: "Offline",
+        mode: workshopModeText.includes("Online") ? "Online" : "Offline",
         message: "",
     });
-
-    const whatsappNumber = "917977482411";
-    const workshopTitle = selectedWorkshop?.title || "Workshop Booking";
 
     const handleChange = (key, value) => {
         setForm((prev) => ({ ...prev, [key]: value }));
@@ -397,11 +420,12 @@ Hello Mindopiia 👋
 I want to book a workshop.
 
 📌 Workshop: ${workshopTitle}
+🎥 Mode: ${form.mode}
+
 👤 Name: ${form.name}
 📞 Phone: ${form.phone}
 📧 Email: ${form.email || "N/A"}
 📅 Preferred Date: ${form.date || "Not decided"}
-🎥 Mode: ${form.mode}
 📝 Message: ${form.message || "N/A"}
 
 Please share available slots & charges.
@@ -411,10 +435,7 @@ Please share available slots & charges.
             whatsappText
         )}`;
 
-        // Close modal first (optional)
         onClose();
-
-        // Redirect to WhatsApp
         window.open(whatsappUrl, "_blank", "noopener,noreferrer");
     };
 
@@ -559,7 +580,6 @@ Please share available slots & charges.
         </div>
     );
 }
-
 
 /* ---------- Small UI Components ---------- */
 

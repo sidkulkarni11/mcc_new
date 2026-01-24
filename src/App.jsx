@@ -19,6 +19,7 @@ import BlogDetails from "./pages/BlogDetails.jsx";
 import Assessment from "./pages/Assessment.jsx";
 import AdminDecoder from "./pages/AdminDecoder.jsx";
 import Workshops from "./pages/Workshops.jsx";
+import Careers from "./pages/Careers.jsx"; // ✅ ADDED
 
 export default function App() {
     return (
@@ -100,6 +101,17 @@ export default function App() {
                     element={
                         <>
                             <Workshops />
+                            <Footer />
+                        </>
+                    }
+                />
+
+                {/* ✅ CAREERS PAGE ADDED */}
+                <Route
+                    path="/careers"
+                    element={
+                        <>
+                            <Careers />
                             <Footer />
                         </>
                     }

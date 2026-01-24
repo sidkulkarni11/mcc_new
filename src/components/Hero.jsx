@@ -3,6 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, EffectFade } from "swiper/modules";
 import { Link } from "react-router-dom";
 import { FaInstagram, FaFacebookF, FaWhatsapp } from "react-icons/fa";
+import { SiGoogle } from "react-icons/si";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -20,6 +21,9 @@ export default function Hero() {
     const whatsappMessage = encodeURIComponent(
         "Hello, I would like to book a therapy appointment with Mindopiia."
     );
+
+    // ✅ Google Review Link
+    const googleReviewLink = "https://g.page/r/CdKVzr2L6UxoEBM/review";
 
     return (
         <section className="bg-[#F5F8FF] pt-[85px] sm:pt-[95px] relative overflow-hidden">
@@ -59,6 +63,17 @@ export default function Hero() {
 
                 {/* ---------------- SOCIAL ICONS (TOP RIGHT) ---------------- */}
                 <div className="absolute top-4 right-4 z-[999] flex flex-col gap-3 bg-white/40 backdrop-blur-md p-3 rounded-xl shadow-lg">
+                    {/* Google Reviews */}
+                    <a
+                        href={googleReviewLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[#4285F4] text-2xl hover:scale-110 transition"
+                        aria-label="Google Reviews - Mindopiia"
+                    >
+                        <SiGoogle />
+                    </a>
+
                     <a
                         href="https://www.instagram.com/mindopiiacounsellingcentre?igsh=MTdxNTB4eWh5ZHp3Mg=="
                         target="_blank"
@@ -131,9 +146,23 @@ export default function Hero() {
                     </Link>
                 </div>
 
-                {/* ---------------- HORIZONTAL SOCIAL SLAB BELOW (WITH WHATSAPP RIGHT) ---------------- */}
+                {/* ---------------- HORIZONTAL SOCIAL SLAB BELOW (GOOGLE LEFT START) ---------------- */}
                 <div className="w-full flex justify-center mt-10">
                     <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 bg-white/70 backdrop-blur-md px-6 py-3 rounded-full shadow-md border border-gray-200">
+                        {/* ✅ Google Reviews (LEFT START) */}
+                        <a
+                            href={googleReviewLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 text-[#4285F4] font-medium hover:opacity-80 transition"
+                            aria-label="Google Reviews - Mindopiia"
+                        >
+                            <SiGoogle className="text-xl" />
+                            <span className="text-sm sm:text-base">Google Reviews</span>
+                        </a>
+
+                        <div className="hidden sm:block h-5 w-[1px] bg-gray-300"></div>
+
                         {/* Instagram Page 1 */}
                         <a
                             href="https://www.instagram.com/mindopiiacounsellingcentre?igsh=MTdxNTB4eWh5ZHp3Mg=="
@@ -196,6 +225,16 @@ export default function Hero() {
 
                 {/* ---------------- MOBILE ICONS (OPTIONAL EXTRA) ---------------- */}
                 <div className="mt-10 flex justify-center gap-6 text-3xl sm:hidden">
+                    <a
+                        href={googleReviewLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:scale-110 transition text-[#4285F4]"
+                        aria-label="Google Reviews - Mindopiia"
+                    >
+                        <SiGoogle />
+                    </a>
+
                     <a
                         href="https://www.instagram.com/mindopiiacounsellingcentre?igsh=MTdxNTB4eWh5ZHp3Mg=="
                         target="_blank"

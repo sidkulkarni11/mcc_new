@@ -5,16 +5,14 @@
   <title>Mindopiia Counselling Center</title>
 
   <script>
-    // Redirect all 404s to index.html while keeping the route
     var path = window.location.pathname;
     var search = window.location.search;
     var hash = window.location.hash;
 
-    // Store the full path in sessionStorage
     sessionStorage.redirect = path + search + hash;
 
-    // Redirect to root
-    window.location.replace("/");
+    // ✅ redirect to index.html instead of "/"
+    window.location.replace("/index.html");
   </script>
 </head>
 

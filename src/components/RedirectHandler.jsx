@@ -1,14 +1,17 @@
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
-export default function RedirectHandler({ children }) {
+export default function RedirectHandler() {
+    const navigate = useNavigate();
+
     useEffect(() => {
         const redirect = sessionStorage.redirect;
-        delete sessionStorage.redirect;
 
-        if (redirect && redirect !== window.location.pathname) {
-            window.history.replaceState(null, "", redirect);
+        if (redirect) {
+            delete sessionStorage.redirect;
+            navigate(redirect, { replace: true });
         }
-    }, []);
+    }, [navigate]);
 
-    return children;
+    return null;
 }

@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <script>
-    // Redirect all 404 requests to index.html for React Router
-    const redirect = sessionStorage.redirect;
-    delete sessionStorage.redirect;
+  <meta charset="utf-8" />
+  <title>Mindopiia Counselling Center</title>
 
-    if (redirect && redirect !== location.href) {
-      history.replaceState(null, null, redirect);
-    } else {
-      sessionStorage.redirect = location.href;
-      location.replace("/index.html");
-    }
+  <script>
+    // Redirect all 404s to index.html while keeping the route
+    var path = window.location.pathname;
+    var search = window.location.search;
+    var hash = window.location.hash;
+
+    // Store the full path in sessionStorage
+    sessionStorage.redirect = path + search + hash;
+
+    // Redirect to root
+    window.location.replace("/");
   </script>
 </head>
+
 <body></body>
 </html>

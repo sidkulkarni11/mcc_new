@@ -1,25 +1,28 @@
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 
+/* ---------------- COMPONENTS ---------------- */
 import Navbar from "./components/Navbar.jsx";
 import Hero from "./components/Hero.jsx";
 import WhyUs from "./components/WhyUs.jsx";
 import Footer from "./components/Footer.jsx";
 import ScrollToTop from "./components/ScrollToTop.jsx";
 
-// PAGES
+/* ---------------- PAGES ---------------- */
 import About from "./pages/About.jsx";
 import Services from "./pages/Services.jsx";
+import Reviews from "./pages/Reviews.jsx";
 import Volunteer from "./pages/Volunteer.jsx";
 import FAQ from "./pages/FAQ.jsx";
-import Competitions from "./pages/Competitions.jsx";
+import Workshops from "./pages/Workshops.jsx";
+import Careers from "./pages/Careers.jsx";
+
 import DigitalProducts from "./pages/DigitalProducts.jsx";
 import Blogs from "./pages/Blogs.jsx";
 import BlogDetails from "./pages/BlogDetails.jsx";
 import Assessment from "./pages/Assessment.jsx";
+import Competitions from "./pages/Competitions.jsx";
 import AdminDecoder from "./pages/AdminDecoder.jsx";
-import Workshops from "./pages/Workshops.jsx";
-import Careers from "./pages/Careers.jsx"; // ✅ ADDED
 
 export default function App() {
     return (
@@ -28,9 +31,8 @@ export default function App() {
             <ScrollToTop />
 
             <Routes>
-                {/* -------------------------- */}
-                {/* HOME PAGE */}
-                {/* -------------------------- */}
+
+                {/* ================= HOME ================= */}
                 <Route
                     path="/"
                     element={
@@ -43,9 +45,7 @@ export default function App() {
                     }
                 />
 
-                {/* -------------------------- */}
-                {/* STATIC PAGES */}
-                {/* -------------------------- */}
+                {/* ================= STATIC ================= */}
                 <Route
                     path="/about"
                     element={
@@ -67,10 +67,10 @@ export default function App() {
                 />
 
                 <Route
-                    path="/digital-products"
+                    path="/reviews"
                     element={
                         <>
-                            <DigitalProducts />
+                            <Reviews />
                             <Footer />
                         </>
                     }
@@ -106,7 +106,6 @@ export default function App() {
                     }
                 />
 
-                {/* ✅ CAREERS PAGE ADDED */}
                 <Route
                     path="/careers"
                     element={
@@ -117,9 +116,17 @@ export default function App() {
                     }
                 />
 
-                {/* -------------------------- */}
-                {/* BLOG SYSTEM */}
-                {/* -------------------------- */}
+                {/* ================= CONTENT ================= */}
+                <Route
+                    path="/digital-products"
+                    element={
+                        <>
+                            <DigitalProducts />
+                            <Footer />
+                        </>
+                    }
+                />
+
                 <Route
                     path="/blogs"
                     element={
@@ -140,9 +147,7 @@ export default function App() {
                     }
                 />
 
-                {/* -------------------------- */}
-                {/* EXTRA PAGES */}
-                {/* -------------------------- */}
+                {/* ================= EXTRA ================= */}
                 <Route
                     path="/assessment"
                     element={
@@ -173,10 +178,9 @@ export default function App() {
                     }
                 />
 
-                {/* -------------------------- */}
-                {/* FALLBACK */}
-                {/* -------------------------- */}
+                {/* ================= FALLBACK ================= */}
                 <Route path="*" element={<Navigate to="/" replace />} />
+
             </Routes>
         </>
     );

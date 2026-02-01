@@ -26,6 +26,7 @@ export default function Footer() {
                         <li><Link to="/" className="hover:text-white">Home</Link></li>
                         <li><Link to="/about" className="hover:text-white">About</Link></li>
                         <li><Link to="/services" className="hover:text-white">Services</Link></li>
+                        <li><Link to="/reviews" className="hover:text-white">Reviews</Link></li>
                         <li><Link to="/volunteer" className="hover:text-white">Volunteer</Link></li>
                         <li><Link to="/faq" className="hover:text-white">FAQ</Link></li>
                     </ul>
@@ -70,6 +71,19 @@ export default function Footer() {
                                 className="hover:text-white break-all"
                             >
                                 mindopiapsychologist@gmail.com
+                            </a>
+                        </div>
+
+                        {/* GOOGLE REVIEWS */}
+                        <div className="flex items-start gap-3">
+                            <span className="text-lg">⭐</span>
+                            <a
+                                href="https://share.google/0Dn3tY3siaBiGYuht"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="hover:text-white underline underline-offset-4"
+                            >
+                                Read our Google Reviews
                             </a>
                         </div>
 

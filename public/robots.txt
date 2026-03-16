@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mindopiiacounsellingcenter.co.in/sitemap.xml

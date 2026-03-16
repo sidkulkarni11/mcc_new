@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   <title>Mindopiia Counselling Center</title>
 
   <script>
-    sessionStorage.redirect = location.href;
+    var path = window.location.pathname;
+    sessionStorage.setItem("redirect", path + window.location.search + window.location.hash);
+    window.location.replace("/");
   </script>
 
-  <meta http-equiv="refresh" content="0;URL='/'" />
 </head>
 <body></body>
 </html>

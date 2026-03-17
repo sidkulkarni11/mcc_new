@@ -1,159 +1,254 @@
-import React, { useEffect } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
-
-// IMPORT EXTERNAL COMPONENTS
-import CTAButton from "../components/services/CTAButton.jsx";
-import Section from "../components/services/Section.jsx";
-import Grid from "../components/services/Grid.jsx";
+import { useState } from "react";
+import {
+    Laptop,
+    Baby,
+    GraduationCap,
+    User,
+    ClipboardList
+} from "lucide-react";
 
 export default function Services() {
-    useEffect(() => {
-        AOS.init({ duration: 900, once: true });
-    }, []);
+
+    const [active, setActive] = useState("online");
+
+    const services = {
+        online: {
+            icon: <Laptop size={28} />,
+            title: "Online Counselling",
+            desc: "Secure and private therapy sessions from the comfort of your home.",
+            points: [
+                "Video or audio counselling",
+                "Flexible scheduling",
+                "Ideal for working professionals",
+                "Confidential sessions"
+            ]
+        },
+
+        child: {
+            icon: <Baby size={28} />,
+            title: "Child Counselling",
+            desc: "Helping children express emotions and build healthy behaviour.",
+            points: [
+                "Behaviour issues",
+                "Speech delay",
+                "Social interaction",
+                "Study challenges"
+            ]
+        },
+
+        education: {
+            icon: <GraduationCap size={28} />,
+            title: "Educational Counselling",
+            desc: "Guidance for students facing academic or learning difficulties.",
+            points: [
+                "Focus issues",
+                "Reading difficulties",
+                "Subject weakness",
+                "Learning challenges"
+            ]
+        },
+
+        adult: {
+            icon: <User size={28} />,
+            title: "Adult Counselling",
+            desc: "Support for emotional stress, life transitions and personal growth.",
+            points: [
+                "Stress & burnout",
+                "Emotional regulation",
+                "Work pressure",
+                "Relationship concerns"
+            ]
+        },
+
+        testing: {
+            icon: <ClipboardList size={28} />,
+            title: "Psychological Testing",
+            desc: "Professional psychological and aptitude assessments.",
+            points: [
+                "IQ Testing",
+                "Personality assessment",
+                "Aptitude testing",
+                "Learning disability assessment"
+            ]
+        }
+    };
 
     return (
-        <div className="pt-28 bg-[#F7FAFF]">
-            {/* HERO */}
-            <section
-                className="px-6 py-24 text-center bg-gradient-to-br from-white via-[#F3F7FF] to-[#EAF0FF]"
-                data-aos="fade-down"
-            >
-                <p className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0D3B66]/10 text-[#0D3B66] font-semibold text-sm">
-                    Mindopiia Counselling Centre
-                </p>
 
-                <h1 className="mt-5 text-4xl md:text-6xl font-extrabold text-[#0D3B66] leading-tight">
+        <div className="pt-24 bg-[#F7FAFF] min-h-screen">
+
+            {/* HERO */}
+
+            <section className="text-center px-6 py-16">
+
+                <h1 className="text-4xl md:text-5xl font-bold text-[#0D3B66]">
                     Our Services
                 </h1>
 
-                <p className="mt-6 text-lg md:text-xl max-w-3xl mx-auto text-gray-600 leading-relaxed">
-                    Compassionate, ethical, and evidence-informed counselling for children,
-                    students, adults & families — with both <span className="font-semibold text-gray-800">Online</span>{" "}
-                    and <span className="font-semibold text-gray-800">Offline</span> support available.
+                <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
+                    Compassionate counselling for children, students and adults.
+                    Online and offline therapy available across Mumbai.
                 </p>
 
-                {/* Chips */}
-                <div className="mt-8 flex flex-wrap justify-center gap-3">
-          <span className="px-4 py-2 rounded-full bg-white border border-gray-200 text-gray-700 text-sm font-semibold shadow-sm">
-            Online Counselling Available
-          </span>
-                    <span className="px-4 py-2 rounded-full bg-white border border-gray-200 text-gray-700 text-sm font-semibold shadow-sm">
-            Offline Sessions Across Mumbai
-          </span>
-                    <span className="px-4 py-2 rounded-full bg-white border border-gray-200 text-gray-700 text-sm font-semibold shadow-sm">
-            Confidential & Non-judgemental
-          </span>
-                </div>
             </section>
 
-            {/* ONLINE COUNSELLING */}
-            <Section title="Online Counselling" emoji="💻">
-                <p className="text-gray-600 max-w-4xl mx-auto text-center mb-8 leading-relaxed">
-                    Prefer therapy from the comfort of your home? We offer secure online sessions
-                    that are structured, private, and supportive — ideal for busy schedules,
-                    long-distance clients, or those who feel more comfortable starting online.
-                </p>
 
-                <Grid
-                    direction="zoom-in"
-                    items={[
-                        "Video / audio sessions from home",
-                        "Comfortable for first-time clients",
-                        "Ideal for working professionals",
-                        "Flexible scheduling support",
-                        "Safe, private & guided sessions",
-                        "Same care, same confidentiality",
-                    ]}
-                />
+            {/* SERVICE TABS */}
 
-                <CTAButton text="Book Online Counselling" message="I want to book Online Counselling" />
-            </Section>
+            <div className="max-w-5xl mx-auto px-4">
 
-            {/* CHILD */}
-            <Section title="Child Counselling" emoji="👶">
-                <Grid
-                    direction="fade-right"
-                    items={[
-                        "Difficulty expressing emotions",
-                        "Study or concentration issues",
-                        "Irritability / behaviour concerns",
-                        "Eating non-food items",
-                        "Nail biting, thumb sucking, hair pulling",
-                        "Speech delay / stammering",
-                        "Difficulty mixing socially",
-                    ]}
-                />
-                <CTAButton text="Book Child Counselling" message="I want Child Counselling" />
-            </Section>
+                <div className="flex flex-wrap justify-center gap-3 mb-10">
 
-            {/* EDUCATIONAL */}
-            <Section title="Educational Counselling" emoji="🎓">
-                <Grid
-                    direction="fade-left"
-                    items={[
-                        "Difficulty keeping up academically",
-                        "Trouble reading / writing",
-                        "Weak in specific subjects",
-                        "Lack of focus",
-                        "Classroom behaviour issues",
-                    ]}
-                />
-                <CTAButton text="Book Educational Counselling" message="I want Educational Counselling" />
-            </Section>
+                    <Tab label="Online" id="online" active={active} setActive={setActive}/>
+                    <Tab label="Child" id="child" active={active} setActive={setActive}/>
+                    <Tab label="Education" id="education" active={active} setActive={setActive}/>
+                    <Tab label="Adult" id="adult" active={active} setActive={setActive}/>
+                    <Tab label="Testing" id="testing" active={active} setActive={setActive}/>
 
-            {/* ADULT */}
-            <Section title="Adult Counselling" emoji="🧑‍⚕️">
-                <Grid
-                    direction="fade-right"
-                    items={[
-                        "Emotional stress / sadness",
-                        "Avoidance / wanting to run away",
-                        "Difficulty expressing feelings",
-                        "Poor work performance",
-                        "Mood swings",
-                        "Feeling stuck",
-                    ]}
-                />
-                <CTAButton text="Book Adult Counselling" message="I want Adult Counselling" />
-            </Section>
+                </div>
 
-            {/* TESTING */}
-            <Section title="Testing Services" emoji="📝">
-                <Grid
-                    direction="zoom-in"
-                    items={[
-                        "IQ Testing",
-                        "Developmental Testing",
-                        "Psychological Evaluation",
-                        "Personality Assessment",
-                        "LD Assessment",
-                        "Aptitude Testing",
-                        "Interest Inventory",
-                        "More...",
-                    ]}
-                />
-                <CTAButton text="Book Testing" message="I want to book testing" />
-            </Section>
+            </div>
 
-            {/* FINAL CTA */}
-            <section
-                className="px-6 py-20 text-center bg-gradient-to-b from-[#F7FAFF] to-[#EEF3FF]"
-                data-aos="fade-up"
-            >
-                <h2 className="text-3xl md:text-5xl font-extrabold text-[#0D3B66]">
+
+            {/* ACTIVE SERVICE CONTENT */}
+
+            <div className="max-w-4xl mx-auto px-5">
+
+                <div className="bg-white rounded-2xl shadow-md p-8 border">
+
+                    <div className="flex items-center gap-3">
+
+                        {services[active].icon}
+
+                        <h2 className="text-2xl font-bold text-[#0D3B66]">
+                            {services[active].title}
+                        </h2>
+
+                    </div>
+
+                    <p className="mt-4 text-gray-600">
+                        {services[active].desc}
+                    </p>
+
+
+                    <ul className="mt-6 space-y-3 text-gray-700">
+
+                        {services[active].points.map((p, i) => (
+                            <li key={i}>✔ {p}</li>
+                        ))}
+
+                    </ul>
+
+
+                    {/* CTA */}
+
+                    <div className="mt-8">
+
+                        <a
+                            href="https://wa.me/91797482411"
+                            target="_blank"
+                            className="inline-block bg-[#0D3B66] text-white
+              px-6 py-3 rounded-lg font-semibold hover:bg-[#0b2f52] transition"
+                        >
+                            Book Counselling
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            {/* WHY CHOOSE US */}
+
+            <section className="mt-20 px-6">
+
+                <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-6">
+
+                    <Feature
+                        title="Confidential"
+                        desc="Your privacy and trust are always protected."
+                    />
+
+                    <Feature
+                        title="Evidence Based"
+                        desc="Professional therapy using proven psychological methods."
+                    />
+
+                    <Feature
+                        title="Online & Offline"
+                        desc="Flexible counselling options based on your comfort."
+                    />
+
+                </div>
+
+            </section>
+
+
+            {/* BOOK CTA */}
+
+            <section className="text-center mt-20 pb-20">
+
+                <h2 className="text-3xl font-bold text-[#0D3B66]">
                     Begin Your Healing Journey
                 </h2>
 
-                <p className="text-gray-600 mt-4 max-w-2xl mx-auto leading-relaxed">
-                    You don’t have to carry everything alone. Support is one message away.
+                <p className="mt-3 text-gray-600">
+                    Support is one message away.
                 </p>
 
-                <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
-                    <CTAButton text="Book an Appointment" message="I want to book a session" />
-                    <CTAButton text="Book Online Session" message="I want to book an online session" />
-                </div>
+                <a
+                    href="https://wa.me/91797482411"
+                    className="mt-6 inline-block bg-green-500 text-white
+          px-7 py-3 rounded-lg font-semibold hover:bg-green-600 transition"
+                >
+                    Book a Session on WhatsApp
+                </a>
+
             </section>
+
         </div>
     );
+}
+
+
+function Tab({label,id,active,setActive}) {
+
+    return (
+
+        <button
+            onClick={()=>setActive(id)}
+            className={`px-5 py-2 rounded-full text-sm font-semibold transition
+      ${active===id
+                ? "bg-[#0D3B66] text-white"
+                : "bg-white border text-gray-700 hover:bg-gray-100"}
+      `}
+        >
+            {label}
+        </button>
+
+    );
+
+}
+
+
+function Feature({title,desc}) {
+
+    return (
+
+        <div className="bg-white p-6 rounded-xl border shadow-sm text-center">
+
+            <h3 className="font-bold text-lg text-[#0D3B66]">
+                {title}
+            </h3>
+
+            <p className="text-gray-600 mt-2 text-sm">
+                {desc}
+            </p>
+
+        </div>
+
+    );
+
 }

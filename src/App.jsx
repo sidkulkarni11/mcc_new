@@ -23,6 +23,7 @@ import BlogDetails from "./pages/BlogDetails.jsx";
 import Assessment from "./pages/Assessment.jsx";
 import Competitions from "./pages/Competitions.jsx";
 import AdminDecoder from "./pages/AdminDecoder.jsx";
+import BecomeCounsellor from "./pages/BecomeCounsellor.jsx";
 
 export default function App() {
     return (
@@ -61,6 +62,16 @@ export default function App() {
                     element={
                         <>
                             <Services />
+                            <Footer />
+                        </>
+                    }
+                />
+
+                <Route
+                    path="/become-counsellor"
+                    element={
+                        <>
+                            <BecomeCounsellor />
                             <Footer />
                         </>
                     }

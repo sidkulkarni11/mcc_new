@@ -1,9 +1,10 @@
 import React from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 /* ---------------- COMPONENTS ---------------- */
 import Navbar from "./components/Navbar.jsx";
 import Hero from "./components/Hero.jsx";
+import OffersPage from "./pages/Offers.jsx";
 import WhyUs from "./components/WhyUs.jsx";
 import Footer from "./components/Footer.jsx";
 import ScrollToTop from "./components/ScrollToTop.jsx";
@@ -39,6 +40,7 @@ export default function App() {
                     element={
                         <>
                             <Hero />
+                            <OffersPage />
                             <About />
                             <WhyUs />
                             <Footer />
